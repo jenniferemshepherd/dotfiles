@@ -1,0 +1,102 @@
+# TODO add sshCommand instructions
+
+# =======================================
+# 🛠 Core Configuration
+# =======================================
+
+[user]
+    name = Jennifer Shepherd
+    email = jennifer.shepherd@ft.com
+
+[github]
+    user = jenniferemshepherd
+
+# Default branch name (ensure Git defaults to "main" instead of "master")
+[init]
+    defaultBranch = main
+
+[core]
+    autocrlf = input  # Ensure LF (Line Feed) endings in cross-platform projects
+    editor = code --wait
+    excludesfile = ~/.gitignore_global
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
+# =======================================
+# 🔄 Delta for Better Diffs
+# =======================================
+
+[pager]
+    diff = delta
+    reflog = delta
+    show = delta
+    log = false # This ensures trackpad scrolling through log works  
+
+[delta]
+    navigate = true  # Use n and N to move between diff sections
+    dark = true      # Or light = true, or omit for auto-detection
+    features = side-by-side line-numbers decorations
+    syntax-theme = Monokai Extended
+
+[interactive]
+    diffFilter = delta --color-only
+
+# =======================================
+# 🛠 Git Aliases for Faster Commands
+# =======================================
+
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+    df = diff
+    lg = log --oneline --graph --decorate --all
+    amend = commit --amend --no-edit
+    undo = reset HEAD~
+    last = log -1 HEAD
+    unstage = reset HEAD --
+    default-branch = !git remote show origin | awk "/HEAD branch/ {print \\$NF}"
+    checkout-default = !git checkout $(git default-branch)
+
+# =======================================
+# 🔒 Security & Authentication
+# =======================================
+
+# Store GitHub credentials (only if you're using HTTPS)
+[credential]
+    helper = osxkeychain
+
+# =======================================
+# 🚀 Performance & UX Enhancements
+# =======================================
+
+[push]
+    default = current  # Push only the current branch
+    autoSetupRemote = true  # Automatically set upstream when pushing a new branch
+
+[pull]
+    rebase = true  # Default to rebasing instead of merging
+
+[color]
+    ui = true  # Enable color output
+
+# =======================================
+# 🔄 Merge & Diff Settings
+# =======================================
+
+[mergetool]
+    keepBackup = false
+
+[diff]
+    tool = vscode
+
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+    tool = vscode
+
+[mergetool "vscode"]
+    cmd = code --wait $MERGED

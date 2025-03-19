@@ -1,0 +1,47 @@
+# =======================================
+# 🐙 Git Aliases
+# =======================================
+
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gp="git push"
+alias gl="git log --oneline --graph --decorate --all"
+alias gd="git diff"
+
+# =======================================
+# 🔐 SSH Authentication Aliases
+# =======================================
+
+alias github-auth-work="ssh -T git@github.com"
+alias github-auth-personal="ssh -T git@github-personal"
+
+# Set Git to use personal SSH key for a specific repo
+alias use-github-personal='git remote set-url origin git@github-personal:$(git remote get-url origin | sed "s/.*github.com[/:]//")'
+
+# Set Git to use work SSH key (default)
+alias use-github-work='git remote set-url origin git@github.com:$(git remote get-url origin | sed "s/.*github.com[/:]//")'
+
+# =======================================
+# 🍺 Homebrew Aliases
+# =======================================
+
+alias brewup="brew update && brew upgrade && brew cleanup"
+
+# =======================================
+# 📂 Directory Management
+# =======================================
+
+function mcd() { mkdir -p "$1" && cd "$1"; }
+alias rmr="rm -rf"
+alias home="cd ~"
+alias dotfiles="cd $DOTFILES"
+
+# Improve `ls` output readability
+alias ls="ls -G"
+alias ll="ls -lahG"
+
+# Reload Zsh config quickly
+alias reload="source ~/.zshrc"
+
+echo "✅ .aliases Loaded!"
