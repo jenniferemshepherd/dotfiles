@@ -1,3 +1,5 @@
+echo "✅ .zshrc successfully loaded!"
+
 # =======================================
 # 🚀 Oh My Zsh Configuration
 # =======================================
@@ -16,6 +18,9 @@ plugins=(
     zsh-autosuggestions
     z
 )
+
+[[ -f ~/.aliases ]] && source ~/.aliases
+
 
 # Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
@@ -75,4 +80,5 @@ precmd() {
     echo -ne "\033]0;${PWD##*/}\007"  # Update terminal title
 }
 zstyle ':vcs_info:git:*' formats '(%F{yellow} %b%f) '
-PS1='%n@%m %1~ ${vcs_info_msg_0_} %(!.#.$) ' brew cleanup"
+PS1='%n@%m %1~ ${vcs_info_msg_0_} %(!.#.$) ' brew cleanup
+

@@ -42,3 +42,5 @@ alias ll="ls -lahG"
 
 # Reload Zsh config quickly
 alias reload="source ~/.zshrc"
+
+echo "✅ .aliases Loaded!"

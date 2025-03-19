@@ -67,7 +67,7 @@ create_symlink() { # Define a function to create symlinks safely
 # Symlink dotfiles
 create_symlink ~/dotfiles/.zshrc ~/.zshrc
 create_symlink ~/dotfiles/.gitconfig ~/.gitconfig
-# create_symlink ~/dotfiles/.aliases ~/.aliases
+create_symlink ~/dotfiles/.aliases ~/.aliases
 # create_symlink ~/dotfiles/.exports ~/.exports
 
 

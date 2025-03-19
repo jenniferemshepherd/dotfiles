@@ -17,20 +17,31 @@ If you're setting up a **new Mac** follow these steps **before cloning your dotf
 N.B. If your default SSH settings are not for work, replace `work` with `personal` in these steps.
 
 ```
-// Check if (work) SSH key exists
+# 1️⃣ Check if the SSH key already exists
 ls -l ~/.ssh/id_ed25519_work
-// Generate new key (for work)
+
+# 2️⃣ Generate a new SSH key (for work)
 ssh-keygen -t ed25519 -C "your.work.email@example.com" -f "$HOME/.ssh/id_ed25519_work" -N ""
-// Start  SSH agent
+
+# 3️⃣ Start the SSH agent
 eval "$(ssh-agent -s)"
-Add new (work) key to the SSH agent
+
+# 4️⃣ Add the new work key to the SSH agent
 ssh-add ~/.ssh/id_ed25519_work
-// Copy the public key to clipboard (for GitHub)
+
+# 5️⃣ Copy the public key to clipboard (for GitHub)
 pbcopy < ~/.ssh/id_ed25519_work.pub
-// Add the key to GitHub and test the connection
+
+# 6️⃣ Add the key to GitHub manually
+# Go to: https://github.com/settings/keys
+# Click "New SSH Key" and paste the key
+
+# 7️⃣ Test the SSH connection with GitHub
 ssh -T git@github.com
-// Ensure Git uses SSH instead of HTTPS by default
+
+# 8️⃣ Ensure Git uses SSH instead of HTTPS by default
 git config --global url."git@github.com:".insteadOf "https://github.com/"
+
 ```
 
 ### 3️⃣ Clone dotfiles repo

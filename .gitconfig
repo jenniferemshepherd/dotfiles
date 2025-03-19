@@ -84,9 +84,6 @@
 [color]
     ui = true  # Enable color output
 
-[commit]
-    gpgSign = true  # Sign commits with GPG (if enabled)
-
 # =======================================
 # 🔄 Merge & Diff Settings
 # =======================================
