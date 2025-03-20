@@ -18,7 +18,6 @@
 [core]
     autocrlf = input  # Ensure LF (Line Feed) endings in cross-platform projects
     editor = code --wait
-    sshCommand = ssh -i ~/.ssh/id_ed25519
     excludesfile = ~/.gitignore_global
 
 [url "git@github.com:"]

@@ -1,11 +1,19 @@
 echo "✅ .zshrc successfully loaded!"
 
+export HOME="/Users/jennifer.shepherd"
+
 # =======================================
 # 🚀 Oh My Zsh Configuration
 # =======================================
 
-# TODO: Decide if I want to continue using Oh My Zsh
+# Ensure Oh My Zsh is properly sourced
 export ZSH="$HOME/.oh-my-zsh"
+
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+    source "$ZSH/oh-my-zsh.sh"
+else
+    echo "⚠️ Warning: Oh My Zsh not found! Run setup.sh to install it."
+fi
 
 # Theme
 ZSH_THEME="robbyrussell"
@@ -20,10 +28,6 @@ plugins=(
 )
 
 [[ -f ~/.aliases ]] && source ~/.aliases
-
-
-# Load Oh My Zsh
-source $ZSH/oh-my-zsh.sh
 
 
 # =======================================
@@ -54,6 +58,15 @@ setopt AUTO_PUSHD # Automatically push directories onto the directory stack
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+# Homebrew setup (Ensure Homebrew tools take priority)
+export PATH="/opt/homebrew/bin:$PATH"
+
+# Initialize Homebrew environment (recommended for Apple Silicon)
+if [ -f "/opt/homebrew/bin/brew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+re
+
 # Append node_modules/.bin if it exists (Only adds when applicable)
 if [[ -d "./node_modules/.bin" ]]; then
     export PATH="./node_modules/.bin:$PATH"
@@ -81,4 +94,3 @@ precmd() {
 }
 zstyle ':vcs_info:git:*' formats '(%F{yellow} %b%f) '
 PS1='%n@%m %1~ ${vcs_info_msg_0_} %(!.#.$) ' brew cleanup
-

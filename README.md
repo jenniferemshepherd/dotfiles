@@ -24,7 +24,9 @@ ls -l ~/.ssh/id_ed25519_work
 ssh-keygen -t ed25519 -C "your.work.email@example.com" -f "$HOME/.ssh/id_ed25519_work" -N ""
 
 # 3️⃣ Start the SSH agent
-eval "$(ssh-agent -s)"
+if [[ -z "$(pgrep ssh-agent)" ]]; then
+    eval "$(ssh-agent -s)"
+fi
 
 # 4️⃣ Add the new work key to the SSH agent
 ssh-add ~/.ssh/id_ed25519_work
@@ -37,10 +39,7 @@ pbcopy < ~/.ssh/id_ed25519_work.pub
 # Click "New SSH Key" and paste the key
 
 # 7️⃣ Test the SSH connection with GitHub
-ssh -T git@github.com
-
-# 8️⃣ Ensure Git uses SSH instead of HTTPS by default
-git config --global url."git@github.com:".insteadOf "https://github.com/"
+ssh -T -v git@github.com  # Verbose mode helps debug issues
 
 ```
 
@@ -50,9 +49,28 @@ git clone git@github.com:jenniferemshepherd/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
+<!-- something about permissions
+sudo chown -R jennifer.shepherd:admin /opt/homebrew
+ls -ld /opt/homebrew
+ to verify
+ sudo chmod -R u+rwX /opt/homebrew
+now i own brew!
+ -->
+
+
 ### 4️⃣ Run setup script
-`chmod +x setup.sh`
-`./setup.sh`
+```
+chmod +x setup.sh
+./setup.sh
+```
+
+```
+su engadmin  # Switch to an admin account
+cd /Users/jennifer.shepherd/dotfiles
+setup-admin.sh
+exit  # Go back to normal user
+```
+
 
 ---
 

@@ -3,6 +3,7 @@ brew "gh"  # GitHub CLI
 brew "git"
 brew "volta"
 brew "zsh-syntax-highlighting"
+tap "dopplerhq/cli"
 brew "dopplerhq/cli/doppler"
 brew "git-delta"  # Improves `git diff` output
 
