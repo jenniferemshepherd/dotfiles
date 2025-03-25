@@ -61,20 +61,27 @@ now i own brew!
 ### 4️⃣ Run setup script
 ```
 chmod +x setup.sh
-./setup.sh
-```
-
-```
 su engadmin  # Switch to an admin account
-cd /Users/jennifer.shepherd/dotfiles
 setup-admin.sh
 exit  # Go back to normal user
+./setup.sh
 ```
-
 
 ---
 
 ## ✨ What the set up script will do
+
+setup-admin.sh
+- installs homebrew under admin perms
+- installs the contents of Brewfile
+
+setup.sh
+- sets path
+- uses Volta to install node, npm, yarn
+- installs oh my zsh and autosuggestions plugin
+- creates symlinks
+- installs vscode extensions
+- loads .zshrc
 
 ### Some pointers on maintaining your dotfiles:
 
